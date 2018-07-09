@@ -70,13 +70,81 @@ public class courier {
 	}
 	
 	public static void displayMenu(){
-		System.out.println("----Please Select A Transaction----");
-		System.out.println("[1] Send Money");
-		System.out.println("[2] Receive Money");
-		System.out.println("Exit");
+		System.out.println("====Please Select A Transaction====");
+		System.out.println("====Display===");
+		System.out.println("[1] Receiver Information");
+		System.out.println("[2] Sender Information");
+		System.out.println("====Create===");
+		System.out.println("[3] Add New Receiver");
+		System.out.println("[4] Add New Sender");
+		System.out.println("====Update===");
+		System.out.println("[5] Edit Receiver Information");
+		System.out.println("[6] Edit Sender Information");
+		System.out.println("====Delete===");
+		System.out.println("[7] Remove Receiver");
+		System.out.println("[8] Remove Sender");
+		System.out.println("==================================");
+		System.out.println("[0] Exit");
 	}
 	
-	public void 
-	
+	public static void handleUserRequest() throws SQLException{
+		Scanner s = new Scanner(System.in);
+		int choice = 0;
+		String buffer = "";
+		
+		while(true){
+			displayMenu();
+			System.out.print("Enter the number of your transaction: ");
+			buffer = s.next();
+			
+			try{
+				choice=Integer.parseInt(buffer);
+				break;
+				
+			}catch (Exception e){
+				System.out.println("You have made an invalid transaction.");
+				continue;
+			}
+		}
+		
+		switch(choice){
+			case 0:
+				System.out.println("Goodbye");
+				app.disconnectFromDatabase();
+				System.exit(0);
+				break;
+				
+			case 1:
+				app.showReceiver();
+				break;
+			
+			case 2:
+				app.showSender();
+				break;
+				
+			case 3:
+				app.addNewReceiver();
+				break;
+				
+			case 4:
+				app.addNewSender();
+				break;
+				
+			case 5:	
+				app.editReceiver();
+				break;
+				
+			case 6:
+				app.editSender();
+				break;
+				
+			case 7:
+				app.removeReceiver();
+				break;
+				
+			case 8:
+				app.removeSender();
+				break;
+		}
 	
 }
