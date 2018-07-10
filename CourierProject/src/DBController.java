@@ -61,7 +61,7 @@ public class DBController {
     	height = 10;
     }
     
-    public void addTransaction(int tNo, String sID, String rID, String tDate, int cFee) throws Exception {
+    public void addTransaction(int tNo, int sID, int rID, String tDate, int cFee) throws Exception {
     	sql = "INSERT INTO transactions(trackingNo, senderID, receiverID, transactionDate, courierFee) VALUES(?, ?, ?, ?, ?);";
     	ps = connection.prepareStatement(sql);
     	ps.setInt(1, tNo);
@@ -74,7 +74,7 @@ public class DBController {
     	height = 10;
     }
     
-    public void addMoneyExpress(int tNo, String sID, String rID, int amt, String sts) throws Exception {
+    public void addMoneyExpress(int tNo, int sID, int rID, int amt, String sts) throws Exception {
     	sql = "INSERT INTO transactions(trackingNo, senderID, receiverID, amount, status) VALUES(?, ?, ?, ?, ?);";
     	ps = connection.prepareStatement(sql);
     	ps.setInt(1, tNo);
