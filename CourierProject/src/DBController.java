@@ -10,19 +10,6 @@ public class DBController {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(url, user, pass);
     }
-	
-    public void newReceiver(Integer rID,String fName,String lName,String address,Integer contact) throws Exception {
-    	sql = "Insert into receiverdetails(receiverID,firstName,lastName,address,contactNo) values (?, ?, ?, ?, ?);";
-    	ps = connection.prepareStatement(sql);
-    	ps.setInt(1, rID);
-    	ps.setString(2, fName);
-    	ps.setString(3, lName);
-    	ps.setString(4, address);
-    	ps.setInt(5, contact);
-    	ps.executeUpdate();
-    	System.out.println("Succesfully added to database");
-    	height = 10;
-    }
     
     public void showReceiver() throws Exception {
     	stmt = connection.createStatement();
