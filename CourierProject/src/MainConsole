@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.*;
 import java.util.*;
 
-public class Courier {
+public class MainConsole {
 	private static Scanner scan = new Scanner(System.in);
 	private static DBController control;
 	
