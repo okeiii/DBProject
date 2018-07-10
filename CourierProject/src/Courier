@@ -55,95 +55,90 @@ public class Courier {
 		}
 		
 	}
-	
-	/**public static void productMenu() {
-		System.out.println("-------Send Money MENU-------");
-		System.out.println("| 0.  Go back to table menu");
-		System.out.println("| 1.  Enter amount of money to be sent");
-		System.out.println("| 2.  Check receiver ID"); //check receiver/status?
-		System.out.println("| 3.  Show all transactions"); //status?
-		System.out.println("| 4.  Update a transaction");
-		System.out.println("| 5.  Delete a transaction");
-	}
-	
-	public static void orderMenu() {
-		System.out.println("--------Receive Money MENU---------");
-		System.out.println("| 0.  Go back to table menu");
-		System.out.println("| 6.  Enter amount of money to be received");
-		System.out.println("| 7.  Check senderID");
-		System.out.println("| 8.  Show all transactions");
-		System.out.println("| 9.  Update a transaction");
-		System.out.println("| 10.  Delete a transaction");
-	}**/
-	
+
 	public static void choiceExecute(int choice) {
 		try {
 		switch (choice) {
 			case 1:
+				showReceiver();
 				displayMenu();
 				break;
 				
 			case 2:
+				showSender();
 				displayMenu();
 				break;
 				
 			case 3:
+				showTransaction();
 				displayMenu();
 				break;
 				
 			case 4:
-				displayMenu();
+				showMoneyExpress();
+				show displayMenu();
 				break;
 				
 			case 5:
+				addReceiver();
 				displayMenu();
 				break;
 				
 			case 6:
+				addSender();
 				displayMenu();
 				break;
 				
 			case 7:
+				addTransaction();
 				displayMenu();
 				break;
 				
 			case 8:
+				addMoneyExpress();
 				displayMenu();
 				break;
 				
 			case 9:
+				editReceiver();
 				displayMenu();
 				break;
 				
 			case 10:
-
+				editSender();
 				displayMenu();
 				break;
 				
 			case 11:
+				editTransaction();
 				displayMenu();
 				break;
 				
 			case 12:
-				displayMenu();
-				break;
-
-			case 13:
+				editMoneyExpress();
 				displayMenu();
 				break;
 				
+			case 13:
+				removeReceiver();
+				displayMenu();
+				break;
+
 			case 14:
+				removeSender();
 				displayMenu();
 				break;
 				
 			case 15:
-				displayMenu();
-				break;
-
-			case 16:
+				removeTransaction();
 				displayMenu();
 				break;
 				
+			case 16:
+				removeMoneyExpress();
+				displayMenu();
+				break;
+
 			case 17:
 				displayMenu();
 				break;
