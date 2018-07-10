@@ -35,7 +35,7 @@ public class DBController {
     	return stmt.executeQuery(sql);
     }
 	
-    public void addReceiver(int rID, String fName, String lName, String address, int contact) throws Exception {
+    public void addReceiver(int rID, String fName, String lName, String address, String contact) throws Exception {
     	sql = "INSERT INTO receiverdetails(receiverID, firstName, lastName, address, contactNo) VALUES(?, ?, ?, ?, ?);";
     	ps = connection.prepareStatement(sql);
     	ps.setInt(1, rID);
