@@ -156,7 +156,7 @@ public class Courier {
 
 	public static void showReceiver() {
 		try {
-			ResultSet result = control.getReceiver();
+			ResultSet result = control.showReceiver();
 			ResultSetMetaData rsmd = result.getMetaData();
 			int columnNumber = rsmd.getColumnCount();
 			System.out.println();
@@ -176,19 +176,82 @@ public class Courier {
 	}
 	
 	public static void showSender() {
-		
+		try {
+			ResultSet result = control.showSender();
+			ResultSetMetaData rsmd = result.getMetaData();
+			int columnNumber = rsmd.getColumnCount();
+			System.out.println();
+			
+			while (result.next()) {
+				for (int i = 1; i <= columnNumber; i++) {
+					if (i > 1) System.out.print(",   ");
+					String columnValue = result.getString(i);
+					System.out.print(columnValue + "  ");
+				}
+				System.out.println("");
+			}
+			
+				} catch (Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public static void showTransaction() {
-		
+		try {
+			ResultSet result = control.showTransaction();
+			ResultSetMetaData rsmd = result.getMetaData();
+			int columnNumber = rsmd.getColumnCount();
+			System.out.println();
+			
+			while (result.next()) {
+				for (int i = 1; i <= columnNumber; i++) {
+					if (i > 1) System.out.print(",   ");
+					String columnValue = result.getString(i);
+					System.out.print(columnValue + "  ");
+				}
+				System.out.println("");
+			}
+			
+				} catch (Exception e) {
+				e.printStackTrace();
+			}		
 	}
 	
 	public static void showMoneyExpress() {
-		
+		try {
+			ResultSet result = control.showMoneyExpress();
+			ResultSetMetaData rsmd = result.getMetaData();
+			int columnNumber = rsmd.getColumnCount();
+			System.out.println();
+			
+			while (result.next()) {
+				for (int i = 1; i <= columnNumber; i++) {
+					if (i > 1) System.out.print(",   ");
+					String columnValue = result.getString(i);
+					System.out.print(columnValue + "  ");
+				}
+				System.out.println("");
+			}
+			
+				} catch (Exception e) {
+				e.printStackTrace();
+			}		
 	}
 	
 	public static void addReceiver() {
-		
+		System.out.println("Enter receiver ID: ");
+		int receiverID = scan.nextInt();
+		System.out.println("Enter receiver last name: ");
+		String lastname = scan.nextLine();
+		System.out.println("Enter receiver address: ");
+		String address = scan.nextLine();
+		System.out.println("Enter receiver contact number: ");
+		String contactNo = scan.nextLine();
+		try {
+			control.addReceiver(receiverID, lastname, firstname, address, contactNo);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static void addSender() {
