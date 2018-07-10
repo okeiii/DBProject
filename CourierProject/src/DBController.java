@@ -10,6 +10,19 @@ public class DBController {
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection(url, user, pass);
     }
+	
+    public void newReceiver(Integer rID,String fName,String lName,String address,Integer contact) throws Exception {
+    	sql = "Insert into receiverdetails(receiverID,firstName,lastName,address,contactNo) values (?, ?, ?, ?, ?);";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.setString(2, fName);
+    	ps.setString(3, lName);
+    	ps.setString(4, address);
+    	ps.setInt(5, contact);
+    	ps.executeUpdate();
+    	System.out.println("Succesfully added to database");
+    	height = 10;
+    }
     
     public void showReceiver() {
     	stmt = connection.createStatement();
@@ -28,13 +41,112 @@ public class DBController {
     	sql = "SELECT * FROM transactions;";
     	return stmt.executeQuery(sql);
     }
-    
+	
     public void showMoneyExpress() {
     	stmt = connection.createStatement();
     	sql = "SELECT * FROM moneyexpress;";
     	return stmt.executeQuery(sql);
     }
+	
+    public void addReceiver(int rID, String fName, String lName, String address, int contact) throws Exception {
+    	sql = "INSERT INTO receiverdetails(receiverID, firstName, lastName, address, contactNo) VALUES(?, ?, ?, ?, ?);";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.setString(2, fName);
+    	ps.setString(3, lName);
+    	ps.setString(4, address);
+    	ps.setInt(5, contact);
+    	ps.executeUpdate();
+    	System.out.println("Successfully added Receiver");
+    	height = 10;
+    }
     
+    public void addSender(int sID, String fName, String lName, String address, int contact) throws Exception {
+    	sql = "INSERT INTO senderdetails(senderID, firstName, lastName, address, contactNo) VALUES(?, ?, ?, ?, ?);";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, sID);
+    	ps.setString(2, fName);
+    	ps.setString(3, lName);
+    	ps.setString(4, address);
+    	ps.setInt(5, contact);
+    	ps.executeUpdate();
+    	System.out.println("Successfully added Sender");
+    	height = 10;
+    }
+    
+    public void addTransaction(int tNo, String sID, String rID, String tDate, int cFee) throws Exception {
+    	sql = "INSERT INTO transactions(trackingNo, senderID, receiverID, transactionDate, courierFee) VALUES(?, ?, ?, ?, ?);";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, tNo);
+    	ps.setString(2, sID);
+    	ps.setString(3, rID);
+    	ps.setString(4, tDate);
+    	ps.setInt(5, cFee);
+    	ps.executeUpdate();
+    	System.out.println("Successfully added Transaction");
+    	height = 10;
+    }
+    
+    public void addMoneyExpress(int tNo, String sID, String rID, int amt, String sts) throws Exception {
+    	sql = "INSERT INTO transactions(trackingNo, senderID, receiverID, amount, status) VALUES(?, ?, ?, ?, ?);";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, tNo);
+    	ps.setString(2, sID);
+    	ps.setString(3, rID);
+    	ps.setString(4, amt);
+    	ps.setInt(5, sts);
+    	ps.executeUpdate();
+    	System.out.println("Successfully added Money Express info");
+    	height = 10;
+    }
+
+    public void editReceiver() {
+
+    }
+    
+    public void editSender() {
+
+    }
+    
+    public void editTransaction() {
+
+    }
+    
+    public void editMoneyExpress() {
+
+    }
+	    
+    public void removeReceiver() {
+    	sql = "DELETE FROM receiverdetails WHERE receiverID = ?;";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.executeUpdate();
+    	System.out.println("Sender info deleted.");
+    }
+    
+    public void removeSender() {
+    	sql = "DELETE FROM senderdetails WHERE senderID = ?;";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.executeUpdate();
+    	System.out.println("Sender info deleted.");
+    }
+    
+    public void removeTransaction() {
+    	sql = "DELETE FROM transactions WHERE receiverID = ?;";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.executeUpdate();
+    	System.out.println("Transaction info deleted.");
+    }
+    
+    public void removeMoneyExpress() {
+    	sql = "DELETE FROM moneyexpress WHERE receiverID = ?;";
+    	ps = connection.prepareStatement(sql);
+    	ps.setInt(1, rID);
+    	ps.executeUpdate();
+    	System.out.println("Money Express info deleted.");
+    }
     
    /** public void newReceiver(int rID, String fName, String lName, String address, int contact) throws Exception {
     	sql = "INSERT INTO receiverdetails(receiverID,firstName,lastName,address,contactNo) VALUES (?, ?, ?, ?, ?);";
@@ -61,30 +173,7 @@ public class DBController {
     	ps.setInt(1, rID);
     	return ps.executeQuery();
     }
-
-    public ResultSet getAllReceivers() throws Exception {
-    	stmt = connection.createStatement();
-    	sql = "SELECT * FROM receiverdetails;";
-    	return stmt.executeQuery(sql);
-    }
     
-    public ResultSet getAllSenders() throws Exception {
-    	stmt = connection.createStatement();
-    	sql = "Select * from senderdetails;";
-    	return stmt.executeQuery(sql);
-    }
-    
-    public ResultSet getAllMoneyExp() throws Exception {
-    	stmt = connection.createStatement();
-    	sql = "Select * from moneyexpress;";
-    	return stmt.executeQuery(sql);
-    }
-    
-    public ResultSet getAllTransactions() throws Exception {
-    	stmt = connection.createStatement();
-    	sql = "Select * from transactions;";
-    	return stmt.executeQuery(sql);
-    }
     
     public void deleteTransaction(Integer rID) throws Exception{
     	sql = "delete FROM transactions where receiverID = ?;";
