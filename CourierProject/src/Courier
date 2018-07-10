@@ -387,44 +387,78 @@ public class Courier {
 	}
 	
 	public static void removeReceiver() {
+		System.out.println("Enter new receiver ID: ");
+		int receiverID = scan.nextInt();
+		scan.nextLine();
+		System.out.println("Enter new receiver last name: ");
+		String lastname = scan.nextLine();
+		System.out.println("Enter new receiver first name: ");
+		String firstname = scan.nextLine();
+		System.out.println("Enter new receiver contact no: ");
+		String contactNo = scan.nextLine();
 		
+		try {
+			control.removeReceiver(receiverID, firstName, lastName, address, contactNo);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	public static void removeSender() {
+		System.out.println("Enter new sender ID: ");
+		int senderID = scan.nextInt();
+		scan.nextLine();
+		System.out.println("Enter new sender last name: ");
+		String lastname = scan.nextLine();
+		System.out.println("Enter new sender first name: ");
+		String firstname = scan.nextLine();
+		System.out.println("Enter new sender contact no: ");
+		String contactNo = scan.nextLine();
 		
+		try {
+			control.removeSender(senderID, lastname, firstname, address, contactNo);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 	
 	public static void removeTransaction() {
+		System.out.println("Enter new transaction tracking no: ");
+		int trackingNo = scan.nextInt();
+		scan.nextLine();
+		System.out.println("Enter new transaction sender ID: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter new transaction receiver ID: ");
+		int receiverID = scan.nextInt();
+		System.out.println("Enter new transaction date: ");
+		String transactionDate = scan.nextLine();
+		System.out.println("Enter new transaction courier fee: ");
+		int courierFee = scan.nextInt();
 		
+		try {
+			control.removeTransaction(trackingNo, senderID, receiverID, transactionDate, courierFee);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 	
 	public static void removeMoneyExpress() {
-		
-	}
-	
-	/**	
-	public static void updateCustomerAddress() {
-		System.out.println("Input customer ID: ");
-		Integer ID = scan.nextInt();
+		System.out.println("Enter money express tracking no: ");
+		int trackingNo = scan.nextInt();
 		scan.nextLine();
-		System.out.println("Enter new address: ");
-		String address = scan.nextLine();
+		System.out.println("Enter money express sender ID: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter money express receiver ID: ");
+		int receiverID = scan.nextInt();
+		System.out.println("Enter money express amount: ");
+		int amount = scan.nextInt();
+		System.out.println("Enter money express status: ");
+		String status = scan.nextLine();
+		
 		try {
-			control.updateCustomerAddress(ID, address);
+			control.removeMoneyExpress(trackingNo, senderID, receiverID, amount, status);
 		}catch (Exception e) {
 			e.printStackTrace();
-		}
+		}				
 	}
-	
-	public static void deleteCustomer() {
-		System.out.println("Input customer ID: ");
-		Integer ID = scan.nextInt();
-		scan.nextLine();
-		try {
-			control.deleteCustomer(ID);
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-**/
+}
