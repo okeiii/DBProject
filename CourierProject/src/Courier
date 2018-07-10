@@ -247,6 +247,7 @@ public class Courier {
 		String address = scan.nextLine();
 		System.out.println("Enter receiver contact number: ");
 		String contactNo = scan.nextLine();
+		
 		try {
 			control.addReceiver(receiverID, lastname, firstname, address, contactNo);
 		}catch (Exception e) {
@@ -255,15 +256,58 @@ public class Courier {
 	}
 	
 	public static void addSender() {
+		System.out.println("Enter sender ID: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter receiver last name: ");
+		String lastname = scan.nextLine();
+		System.out.println("Enter receiver address: ");
+		String address = scan.nextLine();
+		System.out.println("Enter receiver contact number: ");
+		String contactNo = scan.nextLine();
 		
+		try {
+			control.addSender(senderID, lastname, firstname, address, contactNo);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 	
 	public static void addTransaction() {
+		System.out.println("Enter tracking no.: ");
+		int trackingNo = scan.nextInt();
+		System.out.println("Enter sender ID: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter receiver ID: ");
+		int receiverID = scan.nextInt();
+		System.out.println("Enter transaction date: ");
+		String senderID = scan.nextLine();
+		System.out.println("Enter courier fee: ");
+		int courierFee = scan.nextInt();
 		
+		try {
+			control.addTransaction(trackingNo, senderID, receiverID, transactionDate, courierFee);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 	public static void addMoneyExpress() {
+		System.out.println("Enter tracking no.: ");
+		int trackingNo = scan.nextInt();
+		System.out.println("Enter sender ID: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter receiver ID: ");
+		int receiverID = scan.nextInt();
+		System.out.println("Enter amount: ");
+		int senderID = scan.nextInt();
+		System.out.println("Enter status: ");
+		String courierFee = scan.nextLine();
 		
+		try {
+			control.addMoneyExpress(trackingNo, senderID, receiverID, amount, status);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}			
 	}
 	
 	public static void editReceiver() {
